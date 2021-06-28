@@ -9,6 +9,20 @@ x-environment: &environment
   DEBUG: 1
 
 services:
+  ci:
+    <<: *runtime
+    build:
+      context: .
+      dockerfile: ci/Dockerfile
+      args:
+        BASE_IMG: $BASE_IMG
+    image: $REG/rt/$SRV:$CI
+    ports:
+      - 8880:8888
+    env_file:
+      - ./.env
+    environment:
+      <<: *environment
   rt:
     <<: *runtime
     build:
