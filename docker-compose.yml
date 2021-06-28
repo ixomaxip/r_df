@@ -10,6 +10,7 @@ x-environment: &environment
 
 services:
   rt:
+    <<: *runtime
     build:
       context: .
       dockerfile: Dockerfile
@@ -20,8 +21,6 @@ services:
       - ./.env
     environment:
       <<: *environment
-    volumes:
-      <<: *runtime
 
 networks:
   default:
