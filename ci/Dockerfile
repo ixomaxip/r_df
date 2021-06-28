@@ -9,7 +9,7 @@ FROM $BASE_IMG
 RUN apt-get -yqq update
 RUN rustup component add rust-src
 RUN apt-get install -y cmake build-essential python3-pip
-RUN pip3 install -y jupyterlab
+RUN pip3 install jupyterlab
 RUN cargo install evcxr_jupyter
 RUN evcxr_jupyter --install
 
