@@ -1,0 +1,29 @@
+version: '2.3'
+
+x-runtime: &runtime
+  # volumes:
+  #   - ./src:/dst
+  restart: always
+
+x-environment: &environment
+  DEBUG: 1
+
+services:
+  rt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BASE_IMG: $BASE_IMG
+    image: $REG/rt/$SRV:$RT
+    env_file:
+      - ./.env
+    environment:
+      <<: *environment
+    volumes:
+      <<: *runtime
+
+networks:
+  default:
+    external:
+      name: rt_default
