@@ -23,6 +23,17 @@ services:
       - ./.env
     environment:
       <<: *environment
+    volumes:
+      - ./src:/srv
+    command:
+      - jupyter
+      - lab
+      - --ip=0.0.0.0
+      - --port=8888
+      - --no-browser
+      - --notebook-dir="/srv"
+      - --allow-root
+      - --LabApp.token=
   rt:
     <<: *runtime
     build:

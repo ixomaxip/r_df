@@ -8,7 +8,7 @@ down logs ps restart create:
 push pull:
 	docker-compose $@ rt ci
 log:
-	docker-compose logs -f rt
+	docker-compose logs -f ci
 bash:
 	docker-compose run --rm ci bash
 up:
